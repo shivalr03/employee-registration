@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500;600;700&display=swap');
+
 $font-size-base: 10px;
+$font-family: 'Poppins', sans-serif;
 @mixin button-bg($bg) {
   background: $bg;
   &:hover {
@@ -11,10 +14,11 @@ $font-size-base: 10px;
 } 
 * {
   font-size: 10px;
-  background-color: #fff;
+  // background-color: #fff;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: 'Poppins', sans-serif;
 }
 .container-fluid{
   max-width: 120rem;
@@ -26,30 +30,65 @@ $font-size-base: 10px;
     text-align: center;
   }
   .form{
+    padding-top: 2em;
+    .container{}
+      .components{
+        margin-top: 4rem;
+      }
     .card{
       border: 0;
-      .title{}
+      .title{
+        padding-bottom: 1rem;
+        font-size: 3rem;
+        text-align: center;
+      }
+      .sub-title{
+        padding-bottom: 1rem;
+        font-size: 2.4rem;
+      }
       .input-container{
+        padding-bottom: 1em;
         .form-label{
           margin-bottom: 0.1em;
+          font-size: 1.6rem;
+          font-weight: 600;
+          color: #8c8a8c;
         }
         .form-control{
-          height: 4em;
+          height: 3em;
+          box-shadow: none;
+          font-size: 1.6rem;
+          &:focus{
+            box-shadow: none;
+          }
+        }
+        .address{
+          height: 8rem;
         }
       }
     }
+    .container-btn{
+      display: flex;
+      gap: 2rem;
+      // .btn{
+      //   &:disabled{
+      //     background-color: #333;
+      //     cursor: not-allowed;
+      //   }
+      // }
+    }
   }
 }
-.btn {
-  color:white;
-  text-decoration:none;
-  padding:0.5em 1em;
-  border-radius:0.4em;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size:2em;
-  border: 0;
-  margin-top: 1em;
- }
- .btn-next {
-  @include button-bg(#3498db);
-}
+// .btn {
+//   color:white;
+//   text-decoration:none;
+//   padding:0.5em 1em;
+//   border-radius:0.4em;
+//   font-family: Arial, Helvetica, sans-serif;
+//   font-size:2em;
+//   border: 0;
+//   margin-top: 1em;
+//  }
+//  .btn-next {
+//   @include button-bg(#3498db);
+// }
