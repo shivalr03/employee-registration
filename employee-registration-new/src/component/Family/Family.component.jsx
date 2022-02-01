@@ -1,23 +1,51 @@
 import React from "react";
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
+import  Typography from '@material-ui/core/Typography';
+import  Button from '@material-ui/core/Button';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import { makeStyles } from "@material-ui/core";
+import  TextField from '@material-ui/core/TextField';
 import './Family.style.scss';
+
+const useStyles = makeStyles({
+  Field:{
+    marginTop:20,
+    marginBottom:40,
+    display: 'flex'
+  }
+})
 export default function Family(props) {
-  const [fullName, setFullName] = useState('');
-  const [familyRelation, setfamilyRelation] = useState('');
-  const [FamilyOccupation, setFamilyOccupation] = useState('');
-  const [FamilyDob, setFamilyDob] = useState('');
+  const classes = useStyles()
+  const [familyFullName, setFamilyFullName] = useState(props.familyData.length>0?props.familyData[0].familyFullName:'');
+  const [familyRelation, setfamilyRelation] = useState(props.familyData.length>0?props.familyData[0].familyRelation:'');
+  const [familyOccupation, setFamilyOccupation] = useState(props.familyData.length>0?props.familyData[0].familyOccupation:'');
+  const [familyDob, setFamilyDob] = useState(props.familyData.length>0?props.familyData[0].familyDob:'');
+  const [component, setComponentRender] = useState([{count:0}]);
   
+  useEffect(() => {
+    // console.log("on Mount");
+    console.log(props);
+  }, []);
+
+  const incrementComponent = () => {
+    let obj = {count: Math.random()};
+    let arr = [...component, obj];
+    setComponentRender(arr)
+
+  }
+
   const handleInput = (event) =>{
     console.log(event.target.id);
     if(event.target !== undefined){
       switch(event.target.id) {
-        case 'fullName' : setFullName(event.target.value);
+        case 'familyFullName' : setFamilyFullName(event.target.value);
                             break;
         case 'familyRelation' :setfamilyRelation(event.target.value);
                             break;
-        case 'FamilyOccupation' :setFamilyOccupation(event.target.value);
+        case 'familyOccupation' :setFamilyOccupation(event.target.value);
                             break;
-        case 'FamilyDob' :setFamilyDob(event.target.value);
+        case 'familyDob' :setFamilyDob(event.target.value);
                             break;
        default : console.log('default');
       }
@@ -27,103 +55,98 @@ export default function Family(props) {
 const validateData = (event) => {
   event.preventDefault();
   // debugger;
-  if(!fullName.trim().length>0){
-    document.querySelector('#fullNameHelp').classList.add('errorMsg');
-    document.querySelector('#fullNameHelp').innerHTML = "Full Name is required";
-    setTimeout(()=>{
-      document.querySelector('#fullNameHelp').classList.remove('errorMsg');
-    },3000);
+  if(!familyFullName.trim().length>0){
+    // document.querySelector('#familyFullNameHelp').classList.add('errorMsg');
+    // document.querySelector('#familyFullNameHelp').innerHTML = "Full Name is required";
+    // setTimeout(()=>{
+    //   document.querySelector('#familyFullNameHelp').classList.remove('errorMsg');
+    // },3000);
+    console.log("familyFullName" + familyFullName.length);
+    document.querySelector('#familyFullName').focus();
     return false;
   }
   if(!familyRelation.trim().length>0){
-    document.querySelector('#familyRelationHelp').classList.add('errorMsg');
-    document.querySelector('#familyRelationHelp').innerHTML = "Family relation is required";
-    setTimeout(()=>{
-      document.querySelector('#familyRelationHelp').classList.remove('errorMsg');
-    },3000);
+    // document.querySelector('#familyRelationHelp').classList.add('errorMsg');
+    // document.querySelector('#familyRelationHelp').innerHTML = "Family relation is required";
+    // setTimeout(()=>{
+    //   document.querySelector('#familyRelationHelp').classList.remove('errorMsg');
+    // },3000);
+    console.log("familyRelation" + familyRelation.length);
+    document.querySelector('#familyRelation').focus();
     return false;
   }
-  if(!FamilyOccupation.trim().length>0){
-    document.querySelector('#FamilyOccupationHelp').classList.add('errorMsg');
-    document.querySelector('#FamilyOccupationHelp').innerHTML = "occupation is required";
-    setTimeout(()=>{
-      document.querySelector('#FamilyOccupationHelp').classList.remove('errorMsg');
-    },3000);
+  if(!familyOccupation.trim().length>0){
+    // document.querySelector('#familyOccupationHelp').classList.add('errorMsg');
+    // document.querySelector('#familyOccupationHelp').innerHTML = "occupation is required";
+    // setTimeout(()=>{
+    //   document.querySelector('#familyOccupationHelp').classList.remove('errorMsg');
+    // },3000);
+    console.log("familyOccupation" + familyOccupation.length);
+    document.querySelector('#familyOccupation').focus();
     return false;
   }
-  if(!FamilyDob.trim().length>0){
-    document.querySelector('#FamilyDobHelp').classList.add('errorMsg');
-    document.querySelector('#FamilyDobHelp').innerHTML = "Date of birth is required";
-    console.log('FamilyDob');
-    setTimeout(()=>{
-      document.querySelector('#FamilyDobHelp').classList.remove('errorMsg');
-    },3000);
+  if(!familyDob.trim().length>0){
+    // document.querySelector('#familyDobHelp').classList.add('errorMsg');
+    // document.querySelector('#familyDobHelp').innerHTML = "Date of birth is required";
+    // console.log('familyDob');
+    // setTimeout(()=>{
+    //   document.querySelector('#familyDobHelp').classList.remove('errorMsg');
+    // },3000);
+    console.log("familyDob" + familyDob.length);
+    document.querySelector('#familyDob').focus();
     return false;
   }
-  document.getElementById('familyhiddenBtn').click();
+  let familyObj = {
+    familyFullName: familyFullName.trim(),
+    familyRelation: familyRelation.trim(),
+    familyOccupation: familyOccupation.trim(),
+    familyDob: familyDob.trim()
+  }
+  
+  // console.log("Your data:", familyObj);
+  props.familyDataAttributes(familyObj);
+
+  props.handleNextNavigation();
+
   return true;
 }
   return (
     <form className="family card">
-      <h2 className="title">FAMILY DETAILS</h2>
+      <Typography variant="h1" align='center' component="h2" className="title">FAMILY DETAILS</Typography>
       <div className="card-primary">
-        <div className="mb-3 input-container">
-          <label htmlFor="fullName" className="form-label">
-            Full Name
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="fullName"
-            aria-describedby="fullNameHelp"
+      {component.map(() => {
+        return(
+          <div key={Math.random()} className="card-body">
+          <TextField  label="Full Name" variant="outlined" required
+            id="familyFullName" className={classes.Field}
             onChange={event => handleInput(event)}
-          />
-          <small id="fullNameHelp" className="form-text text-mute"></small>
-        </div>
-        <div className="mb-3 input-container">
-          <label htmlFor="familyRelation" className="form-label">
-            Relation
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="familyRelation"
-            aria-describedby="familyRelationHelp"
+            defaultValue={props.familyData.length>0?props.familyData[0].familyFullName:''}
+            />
+            <TextField  label="Relation" variant="outlined" required
+            id="familyRelation" className={classes.Field}
             onChange={event => handleInput(event)}
-          />
-          <small id="familyRelationHelp" className="form-text text-mute"></small>
-        </div>
-        <div className="mb-3 input-container">
-          <label htmlFor="FamilyOccupation" className="form-label">
-            Occupation
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="FamilyOccupation"
-            aria-describedby="FamilyOccupationHelp"
+            defaultValue={props.familyData.length>0?props.familyData[0].familyRelation:''}
+            />
+
+            <TextField  label="Occupation" variant="outlined" required
+            id="familyOccupation" className={classes.Field}
             onChange={event => handleInput(event)}
-          />
-          <small id="FamilyOccupationHelp" className="form-text text-mute"></small>
-        </div>
-        <div className="mb-3 input-container">
-          <label htmlFor="FamilyDob" className="form-label">
-            Date of Birth
-          </label>
-          <input
-            type="date"
-            className="form-control"
-            id="FamilyDob"
-            aria-describedby="FamilyDobHelp"
+            defaultValue={props.familyData.length>0?props.familyData[0].familyOccupation:''}
+            />
+            <TextField  label="Date of birth" variant="outlined" required
+            id="familyDob" className={classes.Field}
             onChange={event => handleInput(event)}
-          />
-          <small id="FamilyDobHelp" className="form-text text-mute"></small>
-        </div>
+            defaultValue={props.familyData.length>0?props.familyData[0].familyDob:''}
+            />
+            </div>
+        )
+      })}
+
       </div>
+      <Button className="plusBtn" onClick={incrementComponent}>+</Button>
       <div className="container-btn">
-      <button className="btn btn-primary" onClick={props.handlePrevNavigation}>Previous</button>
-      <button className="btn btn-primary" onClick={validateData}>Next</button>
-      <button type="button" id="familyhiddenBtn"  className="btn btn-primary" onClick={props.handleNextNavigation}>Next</button>
+      <Button variant="contained" color="primary"  size="large" className="btn btn-primary" onClick={props.handlePrevNavigation} startIcon={<KeyboardArrowLeftIcon/>}>Previous</Button>
+      <Button variant="contained" color="primary"  size="large" className="btn btn-primary" onClick={validateData} endIcon={<KeyboardArrowRightIcon/>}>Next</Button>
     </div>
     </form>
   );

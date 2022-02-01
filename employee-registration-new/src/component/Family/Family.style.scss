@@ -16,3 +16,20 @@
     display: none;
   }
 }
+.plusBtn{
+  color: #fff;
+  font-size: 1.6rem;
+  display: inline-flex;
+  padding: 1rem;
+  border-radius: 100%;
+  line-height: 0;
+  cursor: pointer;
+}
+.card-primary{
+  .card-body{
+    border: 0.1em solid #efefee;
+    border-radius: 0.4em;
+    padding: 2em;
+    margin-bottom: 1em;
+  }
+}

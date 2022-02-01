@@ -1,12 +1,14 @@
 import React from "react";
 import {useState} from 'react';
 import { Formik, Field, Form } from "formik";
+import  Typography from '@material-ui/core/Typography';
+import  Button from '@material-ui/core/Button';
 import "./upload.style.scss";
 
 const Upload = (props) => {
   return (
     <form className="upload card">
-      <h2 className="title">Upload DETAILS</h2>
+      <Typography variant="h1" align='center' component="h2" className="title">Upload DETAILS</Typography>
       <div className="mb-3 input-container">
         <label htmlFor="adhaarCard" className="form-label">
           Adhaar Card
@@ -44,8 +46,8 @@ const Upload = (props) => {
         />
       </div>
       <div className="container-btn">
-      <button className="btn btn-primary" onClick={props.handlePrevNavigation}>Previous</button>
-      <button className="btn btn-primary">Submit</button>
+      <Button  variant="contained" color="primary"  size="large" className="btn btn-primary" onClick={props.handlePrevNavigation}>Previous</Button>
+      <Button variant="contained" color="primary"  size="large" className="btn btn-primary">Submit</Button>
     </div>
     </form>
   );

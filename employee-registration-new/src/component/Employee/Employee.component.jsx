@@ -1,15 +1,33 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import  Typography from '@material-ui/core/Typography';
+import  Button from '@material-ui/core/Button';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import { makeStyles } from "@material-ui/core";
+import  TextField from '@material-ui/core/TextField';
 import './Employee.style.scss';
 
+const useStyles = makeStyles({
+  Field:{
+    marginTop:20,
+    marginBottom:40,
+    display: 'flex'
+  }
+})
 export default function Employee(props) {
 
+  const classes = useStyles()
+const [orgName, setorgName] = useState(props.employeeData.length>0?props.employeeData[0].orgName:'');
+const [jobRole, setjobRole] = useState(props.employeeData.length>0?props.employeeData[0].jobRole:'');
+const [empFromdate, setempFromdate] = useState(props.employeeData.length>0?props.employeeData[0].empFromdate:'');
+const [empTodate, setempTodate] = useState(props.employeeData.length>0?props.employeeData[0].empTodate:'');
+const [ctc, setctc] = useState(props.employeeData.length>0?props.employeeData[0].ctc:'');
 
-const [orgName, setorgName] = useState('');
-const [jobRole, setjobRole] = useState('');
-const [empFromdate, setempFromdate] = useState('');
-const [empTodate, setempTodate] = useState('');
-const [ctc, setctc] = useState('');
+useEffect(() => {
+  // console.log("on Mount");
+  console.log(props);
+}, []);
 
 const handleInput = (event) =>{
   // console.log(event.target.id);
@@ -30,87 +48,58 @@ const handleInput = (event) =>{
     }
   }
 }
-let alertMsg, msgHelp;
+// let alertMsg, msgHelp;
 const validateData = (event) => {
   event.preventDefault();
   // debugger;
-  document.getElementById('employeehiddenBtn').click();
+  let employeeObj = {
+    orgName: orgName.trim(),
+    jobRole: jobRole.trim(),
+    empFromdate: empFromdate.trim(),
+    empTodate: empTodate.trim(),
+    ctc: ctc.trim(),
+  }
+  
+  // console.log("Your data:", obj);
+  props.employeeDataAttributes(employeeObj);
+
+  props.handleNextNavigation();
+
   return true;
 }
   return (
     <form className="employee card">
-      <h2 className="title">EMPLOYMENT DETAILS</h2>
+      <Typography variant="h1" align='center' component="h2" className="title">EMPLOYMENT DETAILS</Typography>
       <div className="card-primary">
-        <div className="mb-3 input-container">
-          <label htmlFor="orgName" className="form-label">
-          Organisation
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="orgName"
-            aria-describedby="orgNameHelp"
-            onChange={event => handleInput(event)}
-          />
-          <small id="orgNameHelp" className="form-text text-mute"></small>
-        </div>
-        <div className="mb-3 input-container">
-          <label htmlFor="jobRole" className="form-label">
-          Designation
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="jobRole"
-            aria-describedby="jobRoleHelp"
-            onChange={event => handleInput(event)}
-          />
-          <small id="jobRoleHelp" className="form-text text-mute"></small>
-        </div>
-        <div className="mb-3 input-container">
-          <label htmlFor="empFromdate" className="form-label">
-            From
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="empFromdate"
-            aria-describedby="fromdateHelp"
-            onChange={event => handleInput(event)}
-          />
-          <small id="fromdateHelp" className="form-text text-mute"></small>
-        </div>
-        <div className="mb-3 input-container">
-          <label htmlFor="empTodate" className="form-label">
-            To
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="empTodate"
-            aria-describedby="empTodateHelp"
-            onChange={event => handleInput(event)}
-          />
-          <small id="empTodateHelp" className="form-text text-mute"></small>
-        </div>
-        <div className="mb-3 input-container">
-          <label htmlFor="ctc" className="form-label">
-            Annual CTC
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="ctc"
-            aria-describedby="ctcHelp"
-            onChange={event => handleInput(event)}
-          />
-          <small id="ctcHelp" className="form-text text-mute"></small>
-        </div>
+      <TextField  label="Organization name" variant="outlined" required 
+      id="orgName" className={classes.Field}
+      onChange={event => handleInput(event)}
+      defaultValue={props.employeeData.length>0?props.employeeData[0].orgName:''}
+      />
+      <TextField  label="Job role" variant="outlined" required 
+      id="jobRole" className={classes.Field}
+      onChange={event => handleInput(event)}
+      defaultValue={props.employeeData.length>0?props.employeeData[0].jobRole:''}
+      />
+      <TextField  label="From date" variant="outlined" required 
+      id="empFromdate" className={classes.Field}
+      onChange={event => handleInput(event)}
+      defaultValue={props.employeeData.length>0?props.employeeData[0].empFromdate:''}
+      />
+      <TextField  label="To date" variant="outlined" required 
+      id="empTodate" className={classes.Field}
+      onChange={event => handleInput(event)}
+      defaultValue={props.employeeData.length>0?props.employeeData[0].empTodate:''}
+      />
+      <TextField  label="CTC" variant="outlined" required 
+      id="ctc" className={classes.Field}
+      onChange={event => handleInput(event)}
+      defaultValue={props.employeeData.length>0?props.employeeData[0].ctc:''}
+      />
       </div>
       <div className="container-btn">
-      <button className="btn btn-primary" onClick={props.handlePrevNavigation}>Previous</button>
-      <button className="btn btn-primary" onClick={validateData}>Next</button>
-      <button type="button" id="employeehiddenBtn"  className="btn btn-primary" onClick={props.handleNextNavigation}>Next</button>
+      <Button variant="contained" color="primary"  size="large" className="btn btn-primary" onClick={props.handlePrevNavigation} startIcon={<KeyboardArrowLeftIcon/>}>Previous</Button>
+      <Button variant="contained" color="primary"  size="large" className="btn btn-primary" onClick={validateData} endIcon={<KeyboardArrowRightIcon/>}>Next</Button>
     </div>
     </form>
   )
