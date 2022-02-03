@@ -116,7 +116,7 @@ const validateData = (event) => {
       <div className="card-primary">
       {component.map(() => {
         return(
-          <div key={Math.random()} className="card-body">
+          <div  className="card-body">
           <TextField  label="Full Name" variant="outlined" required
             id="familyFullName" className={classes.Field}
             onChange={event => handleInput(event)}

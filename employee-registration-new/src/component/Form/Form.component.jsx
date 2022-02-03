@@ -74,8 +74,11 @@ const Form =() => {
     </div>
     <div className="components">
       {activeStep === 0 ? (
-        <Family handleNextNavigation={handleNextNavigation} handlePrevNavigation={handlePrevNavigation} familyDataAttributes = {familyDataAttributes} familyData={familyData} />
-        // <Personal handleNextNavigation={handleNextNavigation} personalDataAttributes = {personalDataAttributes} personalData={personalData} />
+        // <Upload handlePrevNavigation={handlePrevNavigation} />
+        // <Employee handleNextNavigation={handleNextNavigation} handlePrevNavigation={handlePrevNavigation} employeeDataAttributes = {employeeDataAttributes} employeeData={educationData}   />
+        // <Education handleNextNavigation={handleNextNavigation} handlePrevNavigation={handlePrevNavigation} educationDataAttributes = {educationDataAttributes} educationData={educationData}  />
+        // <Family handleNextNavigation={handleNextNavigation} handlePrevNavigation={handlePrevNavigation} familyDataAttributes = {familyDataAttributes} familyData={familyData} />
+        <Personal handleNextNavigation={handleNextNavigation} personalDataAttributes = {personalDataAttributes} personalData={personalData} />
       ) : activeStep === 1 ? (
         <Family handleNextNavigation={handleNextNavigation} handlePrevNavigation={handlePrevNavigation} familyDataAttributes = {familyDataAttributes} familyData={familyData} />
       ) : activeStep === 2 ? (

@@ -11,7 +11,7 @@ const Upload = (props) => {
       <Typography variant="h1" align='center' component="h2" className="title">Upload DETAILS</Typography>
       <div className="mb-3 input-container">
         <label htmlFor="adhaarCard" className="form-label">
-          Adhaar Card
+          Adhaar Card:
         </label>
         <input
           type="file"
@@ -23,7 +23,7 @@ const Upload = (props) => {
       </div>
       <div className="mb-3 input-container">
         <label htmlFor="panCard" className="form-label">
-          Pan Card
+          Pan Card:
         </label>
         <input
           type="file"
@@ -35,13 +35,25 @@ const Upload = (props) => {
       </div>
       <div className="mb-3 input-container">
         <label htmlFor="eduCertificate" className="form-label">
-          Education Certificate
+          Education Certificate:
         </label>
         <input
           type="file"
           className="form-control"
           id="eduCertificate"
           aria-describedby="eduCertificateHelp"
+          // onChange={event => handleInput(event)}
+        />
+      </div>
+      <div className="mb-3 input-container">
+        <label htmlFor="expLetter" className="form-label">
+          Experience Letter:
+        </label>
+        <input
+          type="file"
+          className="form-control"
+          id="expLetter"
+          aria-describedby="expLetterHelp"
           // onChange={event => handleInput(event)}
         />
       </div>

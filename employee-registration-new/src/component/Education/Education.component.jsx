@@ -110,7 +110,7 @@ const validateData = (event) => {
   }
   
   // console.log("Your data:", eduObj);
-  props.EducationDataAttributes(eduObj);
+  // props.EducationDataAttributes(eduObj);
   props.handleNextNavigation();
   return true;
 }
