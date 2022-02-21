@@ -143,7 +143,7 @@ const validateData = (event) => {
       })}
 
       </div>
-      <Button className="plusBtn" onClick={incrementComponent}>+</Button>
+      <Button className="plusBtn" onClick={incrementComponent}>+ Add more Members</Button>
       <div className="container-btn">
       <Button variant="contained" color="primary"  size="large" className="btn btn-primary" onClick={props.handlePrevNavigation} startIcon={<KeyboardArrowLeftIcon/>}>Previous</Button>
       <Button variant="contained" color="primary"  size="large" className="btn btn-primary" onClick={validateData} endIcon={<KeyboardArrowRightIcon/>}>Next</Button>
