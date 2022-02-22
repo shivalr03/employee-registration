@@ -3,6 +3,9 @@ import { useState, useEffect } from "react";
 import { Formik, Field, Form } from "formik";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { makeStyles } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
@@ -377,6 +380,9 @@ let Personal = (props) => {
             : ""
         }
       />
+      <FormGroup>
+        <FormControlLabel control={<Checkbox defaultChecked />} label="Same as Correspondence Address" />
+      </FormGroup>
       <TextField
         label="Permanent Address"
         variant="outlined"

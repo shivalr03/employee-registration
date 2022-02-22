@@ -18,6 +18,13 @@ $font-family: 'Poppins', sans-serif;
   margin: 0;
   font-family: 'Poppins', sans-serif;
 }
+nav{
+  padding: 1em 10%;
+  .brandLogo{
+    width: 5em;
+    
+  }
+}
 .container-fluid{
   max-width: 120rem;
   margin: 0 auto;

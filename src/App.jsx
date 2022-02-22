@@ -34,6 +34,11 @@ const theme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
+    <nav>
+      <a href="/">
+        <img className='brandLogo' src="kyssLogo.png" alt="" />
+      </a>
+    </nav>
     <div className="container-fluid">
       <Typography variant="h1" align='center' className="formHeading">Employee Joining Form</Typography>
       <Form />
