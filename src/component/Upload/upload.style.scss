@@ -1,8 +1,31 @@
 .upload{
   .input-container{
-    
+    max-width: 40em;
+    min-width: 30em;
+    margin: 0 auto;
     .form-label{
       padding-right: 1em;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 0.2em;
+      transition: all .3s linear;
+      &:hover{
+        background-color: #f4f4f4;
+      }
+      .star{
+        color: red;
+      }
+      .uploadBtn{
+        color: #6c757d;
+        font-weight: 400;
+        font-size: 1.4rem;
+        color: #009688;
+        display: inline-block;
+        margin-left: 2em;
+        &:hover{
+        text-decoration: underline;
+        }
+      }
     }
     .form-control{
       border: 0;

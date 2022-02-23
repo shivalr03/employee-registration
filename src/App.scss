@@ -18,6 +18,9 @@ $font-family: 'Poppins', sans-serif;
   margin: 0;
   font-family: 'Poppins', sans-serif;
 }
+.stepper-item-inner-active, .stepper-item-inner-completed{
+  background-color: #009688 !important;
+}
 nav{
   padding: 1em 10%;
   .brandLogo{
@@ -75,6 +78,7 @@ nav{
     .container-btn{
       display: flex;
       gap: 2rem;
+      justify-content: center;
       // .btn{
       //   &:disabled{
       //     background-color: #333;

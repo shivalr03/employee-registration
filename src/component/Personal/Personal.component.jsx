@@ -464,7 +464,7 @@ let Personal = (props) => {
           id="PersonalBtn"
           onClick={validateData}
         >
-          Next
+          Add Family Details
         </Button>
       </div>
     </form>

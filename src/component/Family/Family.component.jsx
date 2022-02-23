@@ -2,6 +2,9 @@ import React from "react";
 import {useState, useEffect} from 'react';
 import  Typography from '@material-ui/core/Typography';
 import  Button from '@material-ui/core/Button';
+import AdapterDateFns from "@mui/lab/AdapterDateFns";
+import LocalizationProvider from "@mui/lab/LocalizationProvider";
+import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import { makeStyles } from "@material-ui/core";
@@ -146,7 +149,7 @@ const validateData = (event) => {
       <Button className="plusBtn" onClick={incrementComponent}>+ Add more Members</Button>
       <div className="container-btn">
       <Button variant="contained" color="primary"  size="large" className="btn btn-primary" onClick={props.handlePrevNavigation} startIcon={<KeyboardArrowLeftIcon/>}>Previous</Button>
-      <Button variant="contained" color="primary"  size="large" className="btn btn-primary" onClick={validateData} endIcon={<KeyboardArrowRightIcon/>}>Next</Button>
+      <Button variant="contained" color="primary"  size="large" className="btn btn-primary" onClick={validateData} endIcon={<KeyboardArrowRightIcon/>}>Add Education Details</Button>
     </div>
     </form>
   );

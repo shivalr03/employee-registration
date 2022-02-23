@@ -27,13 +27,15 @@
 }
 .card-primary{
   .card-body{
-    border: 0.1em solid #efefee;
-    border-radius: 0.4em;
-    padding: 2em;
-    margin-bottom: 1em;
+    padding: 2em 2em 0;
   }
 }
 
 .container-btn{
   margin-top: 2em;
+}
+.card-body{
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 0 1em;
 }

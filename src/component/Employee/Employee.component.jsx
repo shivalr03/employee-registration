@@ -99,7 +99,7 @@ const validateData = (event) => {
       </div>
       <div className="container-btn">
       <Button variant="contained" color="primary"  size="large" className="btn btn-primary" onClick={props.handlePrevNavigation} startIcon={<KeyboardArrowLeftIcon/>}>Previous</Button>
-      <Button variant="contained" color="primary"  size="large" className="btn btn-primary" onClick={validateData} endIcon={<KeyboardArrowRightIcon/>}>Next</Button>
+      <Button variant="contained" color="primary"  size="large" className="btn btn-primary" onClick={validateData} endIcon={<KeyboardArrowRightIcon/>}>Add Documents to upload</Button>
     </div>
     </form>
   )
