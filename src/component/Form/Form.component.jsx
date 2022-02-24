@@ -68,7 +68,6 @@ const Form =() => {
           },
         ]} 
         activeStep={activeStep + 1}
-        // onSelect={handleOnClickStepper}
         showNumber={false} 
     />
     </div>

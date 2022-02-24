@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import kyssLogo from './kyssLogo.png';
 import Form from "./component/Form/Form.component";
 import Stepper from 'react-js-stepper';
 import  Typography from '@material-ui/core/Typography';
@@ -36,7 +37,7 @@ function App() {
     <ThemeProvider theme={theme}>
     <nav>
       <a href="/">
-        <img className='brandLogo' src="kyssLogo.png" alt="" />
+        <img className='brandLogo' src={kyssLogo} alt="" />
       </a>
     </nav>
     <div className="container-fluid">

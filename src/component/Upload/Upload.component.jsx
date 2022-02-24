@@ -6,17 +6,19 @@ import  Button from '@material-ui/core/Button';
 import "./upload.style.scss";
 
 const Upload = (props) => {
+  let [fileName, setFileName] = useState('');
   let fileChoosen = document.getElementById('file-chosen');
   function addFileName(e){
-    // console.log('test');
-    fileChoosen.innerHTML = e.target.files[0].name;
+    console.log(e.target.files[0].name);
+    setFileName(e.target.files[0].name);
+    // fileChoosen.innerHTML = e.target.files[0].name;
   }
   return (
     <form className="upload card">
       <Typography variant="h1" align='center' component="h2" className="title">Upload DETAILS</Typography>
       <div className="mb-3 input-container">
         <label htmlFor="adhaarCard" className="form-label">
-         <span> Adhaar Card<i className="star">*</i></span><span> <i className="uploadBtn">Upload</i> <span id="file-chosen"></span></span>
+         <span> Adhaar Card<i className="star">*</i></span><span> <i className="uploadBtn"><span id="file-chosen">{fileName?fileName:`Upload`}</span></i></span>
         </label>
         <input
           type="file"
@@ -26,6 +28,7 @@ const Upload = (props) => {
           hidden
           onChange={addFileName}
           // onChange={event => handleInput(event)}
+          multiple
         />
       </div>
       <div className="mb-3 input-container">
