@@ -45,6 +45,9 @@ nav{
       }
     .card{
       border: 0;
+      .MuiInputBase-input{
+        height: 0.875rem;
+      }
       .title{
         padding-bottom: 2rem;
         font-size: 3rem;

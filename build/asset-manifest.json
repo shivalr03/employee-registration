@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.69c82013.css",
-    "main.js": "/static/js/main.abf5415f.js",
+    "main.css": "/static/css/main.972edbb0.css",
+    "main.js": "/static/js/main.a6e793a4.js",
     "static/js/787.0286fe26.chunk.js": "/static/js/787.0286fe26.chunk.js",
     "static/media/kyssLogo.png": "/static/media/kyssLogo.06c8940db4509dd71016.png",
     "index.html": "/index.html",
-    "main.69c82013.css.map": "/static/css/main.69c82013.css.map",
-    "main.abf5415f.js.map": "/static/js/main.abf5415f.js.map",
+    "main.972edbb0.css.map": "/static/css/main.972edbb0.css.map",
+    "main.a6e793a4.js.map": "/static/js/main.a6e793a4.js.map",
     "787.0286fe26.chunk.js.map": "/static/js/787.0286fe26.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.69c82013.css",
-    "static/js/main.abf5415f.js"
+    "static/css/main.972edbb0.css",
+    "static/js/main.a6e793a4.js"
   ]
 }
