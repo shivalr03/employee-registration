@@ -60,11 +60,11 @@ export default function Education(props) {
   let alertMsg, msgHelp;
   const validateData = (event) => {
     event.preventDefault();
-    if (!degree.trim().length > 0) {
-      console.log("degree" + degree.length);
-      document.querySelector("#degree").focus();
-      return false;
-    }
+    // if (!degree.trim().length > 0) {
+    //   console.log("degree" + degree.length);
+    //   document.querySelector("#degree").focus();
+    //   return false;
+    // }
     if (!university.trim().length > 0) {
       console.log("university" + university.length);
       document.querySelector("#university").focus();
