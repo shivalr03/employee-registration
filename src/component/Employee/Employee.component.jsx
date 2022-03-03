@@ -71,7 +71,6 @@ export default function Employee(props) {
       ctc: ctc.trim(),
     };
     props.employeeDataAttributes(employeeObj);
-
     props.handleNextNavigation();
 
     return true;

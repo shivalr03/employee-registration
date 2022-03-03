@@ -25,8 +25,26 @@ const useStyles = makeStyles({
     display: "flex",
   },
 });
-
 let Personal = (props) => {
+  function populateText(e){
+    console.log(e);
+    if(e.target.checked === true){
+      console.log('this is checked true');
+      let str=document.getElementById('currentAddress').value;// textbox in which you enter data
+      document.getElementById('permanentAddress').value= str;
+      document.getElementById('permanentAddress').disabled = true;
+    }
+    else{
+      document.getElementById('permanentAddress').value= '';
+      document.getElementById('permanentAddress').disabled = false;
+    }
+  // if(document.getElementById('chechboxid').checked)
+  //           {
+  //             console.log('box is checked');
+  //            let str=document.getElementById('currentAddress').value;// textbox in which you enter data
+  //            document.getElementById('permanentAddress').Value= str;
+  //          }
+          }
   const classes = useStyles();
   const [dob, setDob] = useState(
     props.personalData.length > 0 ? props.personalData[0].date : null
@@ -157,7 +175,6 @@ let Personal = (props) => {
     console.log(props.personalDataAttributes(obj));
     props.handleNextNavigation();
   };
-
   return (
     <form className="personal card" autoComplete="off">
       <Typography variant="h1" align="center" component="h2" className="title">
@@ -276,8 +293,10 @@ let Personal = (props) => {
         />
         <FormGroup>
           <FormControlLabel
-            control={<Checkbox defaultChecked />}
+            id="chechboxid"
+            control={<Checkbox />}
             label="Same as Correspondence Address"
+            onChange={populateText}
           />
         </FormGroup>
         <TextField
@@ -289,11 +308,8 @@ let Personal = (props) => {
           id="permanentAddress"
           className={classes.Field}
           onChange={(event) => handleInput(event)}
-          defaultValue={
-            props.personalData.length > 0
-              ? props.personalData[0].permanentAddress
-              : ""
-          }
+          
+          value=" "
         />
 
         <Typography

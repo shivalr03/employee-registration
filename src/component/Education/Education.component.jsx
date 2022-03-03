@@ -2,18 +2,21 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
-import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
+// import TextField from "@material-ui/core/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
+import TextField from '@mui/material/TextField';
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import { makeStyles } from "@material-ui/core";
 import "./Education.style.scss";
 
 export default function Education(props) {
+  const degrees = [
+    { label: "PUC" },
+    { label: "Graduate" },
+    { label: "Post-graduate" },
+    { label: "Ph.D" },
+  ];
   const [degree, setdegree] = useState(
     props.educationData.length > 0 ? props.educationData[0].degree : ""
   );
@@ -33,6 +36,7 @@ export default function Education(props) {
     console.log(props);
   }, []);
   const handleInput = (event) => {
+    console.log(event.target.id);
     if (event.target !== undefined) {
       switch (event.target.id) {
         case "degree":
@@ -60,6 +64,7 @@ export default function Education(props) {
   let alertMsg, msgHelp;
   const validateData = (event) => {
     event.preventDefault();
+    debugger;
     // if (!degree.trim().length > 0) {
     //   console.log("degree" + degree.length);
     //   document.querySelector("#degree").focus();
@@ -92,36 +97,32 @@ export default function Education(props) {
       todate: todate.trim(),
       specialization: specialization.trim(),
     };
+    props.educationData(eduObj);
     props.handleNextNavigation();
     return true;
   };
+
   return (
     <form className="education card">
       <Typography variant="h1" align="center" component="h2" className="title">
         EDUCATIONAL DETAILS
       </Typography>
       <div className="card-primary">
-        <FormControl sx={{ m: 1, minWidth: 120 }} className="edustyle">
-          <InputLabel id="degreeLabel">Degree</InputLabel>
-          <Select
-            labelId="degreeLabel"
-            id="degree"
-            label="Degree"
-            onChange={(event) => handleInput(event)}
-            defaultValue={
-              props.educationData.length > 0
-                ? props.educationData[0].degree
-                : ""
-            }
-          >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            <MenuItem value={"Graduate"}>Graduate</MenuItem>
-            <MenuItem value={"post-graduate"}>post-Graduate</MenuItem>
-            <MenuItem value={"PUC"}>12/2nd PUC</MenuItem>
-          </Select>
-        </FormControl>
+        <Autocomplete
+          disablePortal
+          labelId="degreeLabel"
+          id="degree"
+          label="Degree"
+          className="edustyle"
+          // onChange={(event) => handleInput(event)}
+          // value={
+          //   props.educationData.length > 0 ? props.educationData[0].degree : ""
+          // }
+          required
+          options={degrees}
+          sx={{ width: 300 }}
+          renderInput={(params) => <TextField {...params} label="Degree" variant="outlined" />}
+        />
         <TextField
           label="University/Institute"
           variant="outlined"
